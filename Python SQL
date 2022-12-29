@@ -1,0 +1,11 @@
+import pyodbc as sql
+import pandas as pd
+
+
+con_str = "Driver={SQL Server Native Client 11.0};Server=.\sql2019;Database=Data;Trusted_Connection=yes;"
+
+conn = sql.connect(con_str)
+sql_string = 'SELECT ID FROM dbo.acc'
+
+df = pd.read_sql(sql_string, con=conn)
+print(df.head())
